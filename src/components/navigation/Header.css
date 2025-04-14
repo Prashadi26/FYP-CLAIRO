@@ -1,0 +1,205 @@
+/* Dashboard Header */
+.dashboard-header {
+  height: 70px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Header left side */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.sidebar-toggle:hover {
+  background-color: #f5f8fa;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* Header right side */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Language button */
+.language-button {
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: #2e3843;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.language-button:hover {
+  background-color: #f5f8fa;
+  border-color: #0f1a26;
+}
+
+/* Language Slider Container */
+.language-slider-container {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Language Slider Styles - Will be applied when slider component is added */
+.language-slider .slider-track {
+  background-color:transparent;
+  border: 1px solid #dfdee3;
+}
+
+.language-slider .slider-option {
+  font-weight: 500;
+  /* color: #5c666d; */
+}
+
+.language-slider .slider-indicator {
+  background-color: #0f1a26;
+}
+
+/* User dropdown */
+.user-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.dropdown-toggle:hover {
+  background-color: #f5f8fa;
+}
+
+.dropdown-toggle .user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #25353e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+.dropdown-toggle .user-name {
+  font-weight: 500;
+  color: #2c3e50;
+  margin-right: 0.5rem;
+}
+
+.dropdown-arrow {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: 200px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  z-index: 100;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f8fa;
+}
+
+.dropdown-item.logout {
+  color: #e74c3c;
+}
+
+.dropdown-item.logout:hover {
+  background-color: #feeaea;
+}
+
+.item-icon {
+  font-size: 1.1rem;
+  margin-right: 0.75rem;
+  width: 1.25rem;
+  text-align: center;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 0.5rem 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .dropdown-toggle .user-name {
+    display: none;
+  }
+  
+  /* Make language slider more compact on mobile */
+  .language-slider-container .slider-track {
+    width: 150px;
+  }
+  
+  /* Hide language slider on very small screens */
+  @media (max-width: 480px) {
+    .language-slider-container {
+      display: none;
+    }
+  }
+}

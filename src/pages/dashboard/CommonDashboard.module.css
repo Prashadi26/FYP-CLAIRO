@@ -1,0 +1,526 @@
+/* Modern Dashboard Styles */
+.dashboardContainer {
+  padding: 1.5rem;
+  background-color: #f5f8fa;
+  min-height: 100vh;
+}
+
+.dashboardHeader {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboardTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* Summary Cards */
+.summaryCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.summaryCard {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.summaryCard:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.summaryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.employeesCard::before {
+  background-color: #4361ee;
+}
+
+.clientsCard::before {
+  background-color: #3a86ff;
+}
+
+.casesCard::before {
+  background-color: #2ec4b6;
+}
+
+.cardIconWrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-right: 1rem;
+}
+
+.employeesCard .cardIconWrapper {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.clientsCard .cardIconWrapper {
+  background-color: rgba(58, 134, 255, 0.1);
+}
+
+.casesCard .cardIconWrapper {
+  background-color: rgba(46, 196, 182, 0.1);
+}
+
+.employeesCard .cardIcon {
+  color: #4361ee;
+}
+
+.clientsCard .cardIcon {
+  color: #3a86ff;
+}
+
+.casesCard .cardIcon {
+  color: #2ec4b6;
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.cardTitle {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem 0;
+}
+
+.cardValue {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.cardLabel {
+  color: #95a5a6;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.cardAction {
+  color: #bdc3c7;
+  transition: all 0.3s ease;
+}
+
+.summaryCard:hover .cardAction {
+  color: #3498db;
+}
+
+/* Main Dashboard Grid */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.analyticsCard {
+  grid-column: span 12;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.tasksCard {
+  grid-column: span 6;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.hearingsCard {
+  grid-column: span 6;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Media query for tablet/mobile layout */
+@media (max-width: 992px) {
+  .tasksCard, .hearingsCard {
+    grid-column: span 12;
+  }
+}
+
+/* Card Headers */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.cardHeaderTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.toggleDetailsButton {
+  background-color: transparent;
+  border: 1px solid #e0e0e0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  color: #6c757d;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggleDetailsButton:hover {
+  background-color: #f8f9fa;
+  color: #2c3e50;
+}
+
+/* Chart Wrapper */
+.chartWrapper {
+  padding: 1.5rem;
+  height: 300px;
+}
+
+/* Case Details Styling */
+.caseDetailsWrapper {
+  padding: 1.5rem;
+}
+
+.caseStatusSummary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.statusCard {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 30%;
+  transition: all 0.3s ease;
+}
+
+.statusCard:hover {
+  transform: translateY(-5px);
+}
+
+.inProgressCard {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.onHoldCard {
+  background-color: rgba(255, 159, 28, 0.1);
+}
+
+.completedCard {
+  background-color: rgba(46, 196, 182, 0.1);
+}
+
+.inProgressCard .statusIcon {
+  color: #4361ee;
+}
+
+.onHoldCard .statusIcon {
+  color: #ff9f1c;
+}
+
+.completedCard .statusIcon {
+  color: #2ec4b6;
+}
+
+.statusIcon {
+  margin-bottom: 0.5rem;
+}
+
+.statusCount {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.statusLabel {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.caseDetailsTables {
+  margin-top: 1rem;
+}
+
+.detailSection {
+  margin-bottom: 1.5rem;
+}
+
+.detailSectionTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.caseChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.caseChip {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.caseChip:hover {
+  transform: scale(1.05);
+}
+
+.inProgressChip {
+  background-color: rgba(67, 97, 238, 0.1);
+  color: #4361ee;
+  border: 1px solid rgba(67, 97, 238, 0.2);
+}
+
+.onHoldChip {
+  background-color: rgba(255, 159, 28, 0.1);
+  color: #ff9f1c;
+  border: 1px solid rgba(255, 159, 28, 0.2);
+}
+
+.completedChip {
+  background-color: rgba(46, 196, 182, 0.1);
+  color: #2ec4b6;
+  border: 1px solid rgba(46, 196, 182, 0.2);
+}
+
+.noCasesMessage {
+  color: #95a5a6;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Tasks Card Styling */
+.tasksContent, .hearingsContent {
+  padding: 0;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.tasksList, .hearingsList {
+  padding: 0;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.taskItem:hover {
+  background-color: #f8f9fa;
+}
+
+.taskDetails {
+  flex: 1;
+}
+
+.taskName {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.taskMeta {
+  display: flex;
+  gap: 1rem;
+  color: #95a5a6;
+  font-size: 0.8rem;
+}
+
+.taskDeadline, .taskCaseLink {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.taskCaseLink {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.taskCaseLink:hover {
+  text-decoration: underline;
+}
+
+.deadlineIndicator {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  background-color: #f1f9ff;
+  color: #3498db;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.daysLeft {
+  font-weight: 600;
+}
+
+/* Hearing Items Styling */
+.hearingItem {
+  display: flex;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.hearingItem:hover {
+  background-color: #f8f9fa;
+}
+
+.hearingDate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 60px;
+  background-color: #f1f9ff;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.dateMonth {
+  font-size: 0.8rem;
+  color: #3498db;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.dateDay {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.hearingDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hearingCaseNo {
+  color: #2c3e50;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hearingCaseNo:hover {
+  color: #3498db;
+}
+
+.hearingCourt {
+  font-size: 0.85rem;
+  color: #95a5a6;
+}
+
+/* Empty State Message */
+.emptyStateMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: #95a5a6;
+  font-style: italic;
+}
+
+/* Loading and Error States */
+.loadingIndicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: #3498db;
+}
+
+.loadingSpinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(52, 152, 219, 0.3);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorNotification {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #feeaea;
+  color: #e74c3c;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Case Details Toggle Text */
+.caseDetailsToggle {
+  text-align: center;
+  color: #95a5a6;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.caseDetailsToggle:hover {
+  color: #3498db;
+}
