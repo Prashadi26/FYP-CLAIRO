@@ -244,19 +244,19 @@ const ClientView = () => {
       return;
     }
 
-    console.log(message);
-    // try {
-    //     const response = await axios.post('http://localhost:5000/send-message', {
-    //         phoneNumber,
-    //         message,
-    //     });
-    //     setStatus('URL sent successfully!');
-    //     setTimeout(() => setStatus(''), 3000);
-    // } catch (error) {
-    //     console.error('Error sending URL:', error);
-    //     setStatus('Failed to send URL.');
-    //     setTimeout(() => setStatus(''), 3000);
-    // }
+    //console.log(message);
+    try {
+        const response = await axios.post('http://localhost:5000/send-message', {
+            phoneNumber,
+            message,
+        });
+        setStatus('URL sent successfully!');
+        setTimeout(() => setStatus(''), 3000);
+    } catch (error) {
+        console.error('Error sending URL:', error);
+        setStatus('Failed to send URL.');
+        setTimeout(() => setStatus(''), 3000);
+    }
   };
 
   // Format dates for better display
