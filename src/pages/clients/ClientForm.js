@@ -68,14 +68,10 @@ const ClientForm = () => {
       if (clientError) {
         throw new Error(clientError.message);
       }
-
       // Set success message
       setSuccess(t('ClientAddedSuccessfully', 'Client added successfully!'));
-
-      
       // Reset form after successful submission
       resetForm();
-      
       // Navigate back to ClientList after short delay
       setTimeout(() => {
         navigate('/clients');

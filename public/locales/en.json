@@ -238,7 +238,8 @@
   "EditFee":"Edit Fee",
   "EditUpdate":"Edit Update",
   "Cancel":"Cancel",
-  "Update Case Details":"Update Case Details"
+  "Update Case Details":"Update Case Details",
+  "confirm":"Please check the confirmation mail"
 
 
 }
