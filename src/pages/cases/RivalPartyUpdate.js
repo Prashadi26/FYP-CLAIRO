@@ -11,7 +11,6 @@ import {
   faMapPin,
   faBalanceScale,
   faArrowLeft,
-  faSave,
 } from "@fortawesome/free-solid-svg-icons";
 
 const RivalPartyUpdate = () => {
@@ -223,7 +222,7 @@ const RivalPartyUpdate = () => {
                 disabled={submitting}
               >
                 {submitting ? t("Updating") : t("Update")}
-                <FontAwesomeIcon icon={faSave} className={styles.buttonIcon} />
+                
               </button>
             </div>
           </form>

@@ -77,7 +77,7 @@ const CaseHistory = () => {
         {caseData && (
           <div className={styles.caseInfo}>
             <span className={styles.caseNumber}>
-              {t("CaseNo")}: <strong>{caseData.case_no}</strong>
+              {t("CaseNo")} <strong>{caseData.case_no}</strong>
             </span>
           </div>
         )}

@@ -114,7 +114,7 @@ const SignUpPage = () => {
 
       if (userInsertError) throw userInsertError;
 
-      setSuccess(t('signup_successful'));
+      setSuccess(t('confirm'));
       setTimeout(() => {
         navigate('/signin');
       }, 1500);
