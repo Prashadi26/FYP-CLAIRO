@@ -61,7 +61,7 @@ const PublicLayout = () => {
                     className={location.pathname === "/aboutUs" ? "active" : ""}
                     onClick={closeMenu}
                   >
-                    {t("About Us")}
+                    {t("about")}
                   </Link>
                 </li>
               </ul>

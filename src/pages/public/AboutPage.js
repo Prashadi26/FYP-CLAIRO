@@ -12,25 +12,19 @@ const AboutPage = () => {
         </section>
         
         <section className="about-content">
-          <div className="about-section">
-            <h2>Our Story</h2>
+        <div className="about-section">
+            <h2>Our vision</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, 
-              mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed 
-              eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui.
-            </p>
-            <p>
-              Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, 
-              tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.
+            We aim to empower legal professionals with technology to enhance productivity and client satisfaction. 
+
+
             </p>
           </div>
-          
           <div className="about-section">
             <h2>Our Mission</h2>
             <p>
-              Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. 
-              Donec mattis at sem nec condimentum. Fusce vehicula, diam id ornare placerat, nulla augue tincidunt sem, at 
-              euismod magna risus at purus.
+            We strive to revolutionize legal case management by offering a seamless and efficient platform tailored for Sri Lankan law chambers. 
+
             </p>
           </div>
           
@@ -39,19 +33,15 @@ const AboutPage = () => {
             <div className="team-grid">
               <div className="team-member">
                 <div className="member-photo"></div>
-                <h3>John Doe</h3>
+                <h3>Prashadi Krishnamoorthy</h3>
                 <p>CEO & Founder</p>
               </div>
               <div className="team-member">
                 <div className="member-photo"></div>
-                <h3>Jane Smith</h3>
+                <h3>Prabashan Krishnamoorthy</h3>
                 <p>CTO</p>
               </div>
-              <div className="team-member">
-                <div className="member-photo"></div>
-                <h3>Mike Johnson</h3>
-                <p>Lead Developer</p>
-              </div>
+              
             </div>
           </div>
         </section>
