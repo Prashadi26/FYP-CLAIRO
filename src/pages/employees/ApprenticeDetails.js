@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../../supabaseClient'; // Adjust path as needed
+import { supabase } from '../../supabaseClient';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// Using react-icons instead of FontAwesome for consistency
 import {
   FaUserGraduate,
   FaPlus,

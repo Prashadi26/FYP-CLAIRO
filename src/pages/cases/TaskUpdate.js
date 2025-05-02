@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
-import styles from "./TaskUpdate.module.css"; // Changed to module CSS
+import styles from "./TaskUpdate.module.css"; 
 import { useTranslation } from "react-i18next";
 
 const TaskUpdate = () => {

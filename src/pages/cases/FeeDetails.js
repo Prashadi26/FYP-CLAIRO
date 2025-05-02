@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import styles from './FeeDetails.module.css'; // New CSS module
+import styles from './FeeDetails.module.css'; 
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faMoneyBillWave, faClipboard, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';

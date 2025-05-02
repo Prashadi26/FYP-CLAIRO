@@ -18,12 +18,12 @@ const DashboardLayout = ({ onLogout }) => {
       const isMobile = window.innerWidth < 1024;
       setMobileView(isMobile);
 
-      // Auto-close sidebar on mobile
+      // Auto-close sidebar for mobile
       if (isMobile && sidebarOpen) {
         setSidebarOpen(false);
       }
 
-      // Auto-open sidebar on desktop
+      // Auto-open sidebar for desktop
       if (!isMobile && !sidebarOpen) {
         setSidebarOpen(true);
       }

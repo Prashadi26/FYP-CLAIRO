@@ -16,7 +16,7 @@ const ResetPasswordPage = () => {
     setMessage('');
     setError('');
     setLoading(true); 
-    // Uncommented this line to properly set loading state
+    
 
     try {
       const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {

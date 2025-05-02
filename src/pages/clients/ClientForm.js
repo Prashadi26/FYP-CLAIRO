@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { supabase } from '../../supabaseClient'; // Adjust the path as needed
+import { supabase } from '../../supabaseClient'; 
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// Assuming you're using react-icons
 import { FaUserPlus, FaArrowLeft, FaTimes, FaUser, FaPhone, FaEnvelope, FaBriefcase, FaCheck } from 'react-icons/fa';
-import styles from './ClientForm.module.css'; // Make sure to update the path
-
+import styles from './ClientForm.module.css'; 
 const ClientForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();

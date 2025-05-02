@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./RivalPartyUpdate.module.css"; // Updated to use CSS modules
+import styles from "./RivalPartyUpdate.module.css"; 
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

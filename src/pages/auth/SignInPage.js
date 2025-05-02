@@ -26,7 +26,6 @@ const SignInPage = ({ onLogin }) => {
   const handleSignIn = async (e) => {
     e.preventDefault();
     setError("");
-    // setLoading(true);
 
     try {
       //: Sign in the user

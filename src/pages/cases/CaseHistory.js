@@ -9,7 +9,7 @@ import {
   faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FaArrowLeft } from "react-icons/fa";
-// Keep original icons
+
 import { useTranslation } from "react-i18next";
 
 const CaseHistory = () => {

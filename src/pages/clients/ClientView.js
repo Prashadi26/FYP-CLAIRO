@@ -134,7 +134,7 @@ const ClientView = () => {
 
   const fetchTasks = async () => {
     try {
-      // First fetch client_case_id using both clientId and caseId
+      // fetch client_case_id using both clientId and caseId
       const { data: clientCaseEntry, error: clientCaseError } = await supabase
         .from("client_case")
         .select("client_case_id")
@@ -147,7 +147,7 @@ const ClientView = () => {
       if (clientCaseEntry) {
         const clientCaseId = clientCaseEntry.client_case_id;
 
-        // Now fetch tasks
+        // fetch tasks
         const { data: tasksData, error } = await supabase
           .from("client_case_task")
           .select("*")

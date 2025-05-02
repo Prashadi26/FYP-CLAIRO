@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../../supabaseClient"; // Adjust path as needed
+import { supabase } from "../../supabaseClient";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -12,7 +12,7 @@ import {
   FaGraduationCap,
   FaCalendarAlt,
 } from "react-icons/fa";
-import styles from "./ApprenticeUpdateForm.module.css"; // This will use the same style as Apprentice.module.css
+import styles from "./ApprenticeUpdateForm.module.css"; 
 
 const ApprenticeUpdateForm = () => {
   const { t } = useTranslation();

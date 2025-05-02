@@ -10,7 +10,7 @@ import {
   FaClipboardList,
 } from "react-icons/fa";
 import styles from "./AddCase.module.css"; 
-// Update to use CSS modules
+
 
 const AddCase = () => {
   const { t } = useTranslation();

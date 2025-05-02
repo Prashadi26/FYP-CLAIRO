@@ -158,7 +158,7 @@ const Sidebar = ({ isOpen, currentPath, onNavigation, onLogout }) => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
 
-    // Clear sessionStorage as well
+    // Clear sessionStorage 
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("password");
     sessionStorage.removeItem("credentials");

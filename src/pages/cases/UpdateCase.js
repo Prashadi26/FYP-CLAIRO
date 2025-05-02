@@ -9,7 +9,7 @@ import {
   FaBuilding,
   FaClipboardList,
 } from "react-icons/fa";
-import styles from "./AddCase.module.css"; // Reuse same styling
+import styles from "./AddCase.module.css"; 
 
 const UpdateCase = () => {
   const { t } = useTranslation();

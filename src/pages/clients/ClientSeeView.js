@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
-import styles from "./ClientSeeView.module.css"; // Updated to use CSS modules
+import styles from "./ClientSeeView.module.css"; 
 import { useTranslation } from "react-i18next";
 import { Calendar, Trash2 } from "lucide-react";
 
@@ -20,7 +20,7 @@ const ClientSeeView = () => {
     fetchCaseDetails();
     fetchClientDetails();
     fetchTasks();
-  }, []); // Added both clientId and caseId to dependencies
+  }, []); 
 
   const fetchCaseDetails = async () => {
     try {

@@ -249,7 +249,7 @@ function App() {
             element={<ClientSeeView />}
           />
           {/* Cases */}
-          {/* ====================================================== */}
+          
           <Route
             path="case-details"
             element={<CaseDetails userInfo={userInfo} />}

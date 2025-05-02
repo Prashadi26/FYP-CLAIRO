@@ -29,7 +29,7 @@ const ClientUpdateForm = () => {
         .from("clients")
         .select("*")
         .eq("client_id", clientId)
-        .single(); // Use .single() to get exactly one row
+        .single(); 
 
       if (error) {
         throw new Error(error.message);

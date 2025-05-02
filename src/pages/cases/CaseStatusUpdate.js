@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import { useTranslation } from "react-i18next";
-import styles from "./CaseStatusUpdate.module.css"; // New CSS module
+import styles from "./CaseStatusUpdate.module.css"; 
 
 const CaseStatusUpdate = () => {
   const { t } = useTranslation();

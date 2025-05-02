@@ -22,13 +22,12 @@ const TaskForm = () => {
   const [status, setStatus] = useState('started');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  // Removed caseDetails state as it's not needed
+
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const navigate = useNavigate();
 
-  // Set loading to false since we don't need to fetch case details
   useEffect(() => {
     setLoading(false);
   }, []);
@@ -131,7 +130,7 @@ const TaskForm = () => {
         <div className={styles.formCard}>
           <form onSubmit={handleSubmit}>
             <div className={styles.formContent}>
-              {/* Case info section removed as requested */}
+ 
               
               {/* Step Field */}
               <div className={styles.formGroup}>
