@@ -1,39 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { supabase } from "../../supabaseClient";
-import { useTranslation } from "react-i18next";
-import styles from "./ClientUpdateForm.module.css";
+import React, { useState, useEffect } from "react"; // Importing React and useState hook
+import { useParams, useNavigate } from "react-router-dom"; // Importing useParams and useNavigate from react-router-dom for routing
+import { supabase } from "../../supabaseClient"; // Importing Supabase client
+import { useTranslation } from "react-i18next"; // Importing useTranslation hook for internationalization
+import styles from "./ClientUpdateForm.module.css"; // Importing CSS module for styling
 
 const ClientUpdateForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(); // Importing useTranslation hook for internationalization
   const { clientId } = useParams(); // Get clientId from URL parameters
   const navigate = useNavigate(); // For navigation
-  const [name, setName] = useState("");
-  const [contactNo, setContactNo] = useState("");
-  const [email, setEmail] = useState("");
-  const [profession, setProfession] = useState("");
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [name, setName] = useState(""); // State to manage client name setting initial value to empty string
+  const [contactNo, setContactNo] = useState(""); // State to manage client contact number setting initial value to empty string
+  const [email, setEmail] = useState(""); // State to manage client email setting initial value to empty string
+  const [profession, setProfession] = useState(""); // State to manage client profession setting initial value to empty string
+  const [error, setError] = useState(null); // State to manage error messages setting initial value to null
+  const [success, setSuccess] = useState(null); // State to manage success messages setting initial value to null
+  const [loading, setLoading] = useState(true); // State to manage loading status setting initial value to true
 
-  // Fetch client details when the component mounts
+  // Fetch client details when the component mounts(Loads initially )
   useEffect(() => {
     fetchClientDetails();
   }, []);
-
-  
   const fetchClientDetails = async () => {
     try {
       setLoading(true);
+      // Fetch client details from Supabase using the clientId from URL parameters
       const { data, error } = await supabase
         .from("clients")
         .select("*")
         .eq("client_id", clientId)
-        .single(); 
+        .single();
+      // Use .single() to get exactly one row
 
       if (error) {
         throw new Error(error.message);
       } else {
+        // if no error throw then set the data to the fields variables
         setName(data.name);
         setContactNo(data.contact_no);
         setEmail(data.email);
@@ -41,20 +42,22 @@ const ClientUpdateForm = () => {
       }
     } catch (err) {
       setError(err.message);
+      // Handle error if fetching client details fails
     } finally {
       setLoading(false);
+      // Set loading to false after fetching data
     }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-    setSuccess(null);
-    setLoading(true);
-
+    e.preventDefault(); // Prevent default form submission
+    setError(null); // Clear any previous error messages
+    setSuccess(null); // Clear any previous success messages
+    setLoading(true); // Enable loading state
     try {
       const { error } = await supabase
         .from("clients")
+        // Update the client details in the database
         .update({
           name,
           contact_no: contactNo,
@@ -62,15 +65,12 @@ const ClientUpdateForm = () => {
           profession: profession || null,
         })
         .eq("client_id", clientId);
-
-      if (error) {
-        throw new Error(error.message);
-      }
-
+      // Check for errors during the update operation
+      if (error) {throw new Error(error.message); }
       setSuccess(t("ClientUpdatedSuccessfully"));
-
       // Navigate back to client list after short delay
       setTimeout(() => {
+        // Set a timeout to navigate back to the previous page after 1.5 seconds
         navigate(-1);
       }, 1500);
     } catch (err) {

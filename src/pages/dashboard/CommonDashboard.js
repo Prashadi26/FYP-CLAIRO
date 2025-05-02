@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import React, { useEffect, useState } from "react"; // import React and useEffect, useState hooks
+import { Bar } from "react-chartjs-2"; // import Bar chart from react-chartjs-2
 import {
   Chart as ChartJS,
   BarElement,
@@ -7,11 +7,11 @@ import {
   LinearScale,
   Tooltip,
   Legend,
-} from "chart.js";
-import { supabase } from "../../supabaseClient";
-import styles from "./CommonDashboard.module.css";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+} from "chart.js"; // import Chart.js components for chart rendering
+import { supabase } from "../../supabaseClient"; // import supabase client for database operations
+import styles from "./CommonDashboard.module.css"; // import CSS module for styling
+import { useTranslation } from "react-i18next"; // import i18next for translation
+import { useNavigate } from "react-router-dom"; // import useNavigate for navigation
 import {
   BarChart4,
   Users,
@@ -23,27 +23,28 @@ import {
   CheckCircle2,
   PauseCircle,
   TimerIcon,
-} from "lucide-react";
+} from "lucide-react"; // import icons from lucide-react for UI elements
 
 // Register required components for Chart.js
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend); // register the components with Chart.js
 
-const CommonDashboard = ({ userInfo }) => {
-  const navigate = useNavigate();
+const CommonDashboard = () => {
+  const navigate = useNavigate(); // initialize navigation
+  const { t } = useTranslation(); // initialize translation
+  const [counts, setCounts] = useState({ employees: 0, clients: 0, cases: 0 }); // initialize state for counts
 
-  const { t } = useTranslation();
-
-  const [counts, setCounts] = useState({ employees: 0, clients: 0, cases: 0 });
   const [caseStatusCounts, setCaseStatusCounts] = useState({
     in_progress: 0,
     on_hold: 0,
     completed: 0,
-  });
+  }); // initialize state for case status counts
   const [caseDetails, setCaseDetails] = useState({
     in_progress: [],
     on_hold: [],
     completed: [],
-  });
+  }); // initialize state for case details
+
+  // initialize state for upcoming tasks and hearings
   const [upcomingTasks, setUpcomingTasks] = useState([]);
   const [upcomingHearings, setUpcomingHearings] = useState([]);
   const [showCaseDetails, setShowCaseDetails] = useState(false);
@@ -64,8 +65,7 @@ const CommonDashboard = ({ userInfo }) => {
   }, []);
 
   const fetchCounts = async () => {
-    try {
-      // take counts for employees, clients, and cases in parallel
+    try {  // take counts for employees, clients, and cases in parallel
       const [
         { count: apprenticeCount },
         { count: attorneyCount },
@@ -89,7 +89,7 @@ const CommonDashboard = ({ userInfo }) => {
         employees: (apprenticeCount || 0) + (attorneyCount || 0),
         clients: clientCount || 0,
         cases: caseCount || 0,
-      });
+      }); // set the counts state with the fetched data
     } catch (err) {
       setError(err.message);
     } finally {
@@ -106,7 +106,7 @@ const CommonDashboard = ({ userInfo }) => {
       if (data) {
         const statusCounts = { in_progress: 0, on_hold: 0, completed: 0 };
         const details = { in_progress: [], on_hold: [], completed: [] };
-
+        // loop through the data and count the cases based on their status
         data.forEach((item) => {
           if (item.current_status === "in_progress") {
             statusCounts.in_progress += 1;
@@ -138,14 +138,14 @@ const CommonDashboard = ({ userInfo }) => {
       setLoading(false);
     }
   };
-  
-  // Fetch upcoming tasks within the next week
 
+
+  // Fetch upcoming tasks within the next week
   const fetchUpcomingTasks = async () => {
     try {
-      const today = new Date();
-      const nextWeek = new Date();
-      nextWeek.setDate(today.getDate() + 7);
+      const today = new Date();// get today's date
+      const nextWeek = new Date();// create a new date object for next week
+      nextWeek.setDate(today.getDate() + 7);// set the date to next week
 
       // Fetch tasks from Supabase
       const { data } = await supabase
@@ -159,10 +159,10 @@ const CommonDashboard = ({ userInfo }) => {
             cases (case_no)
           `
         )
-        .gte("end_date", today.toISOString())
-        .lte("end_date", nextWeek.toISOString());
-
+        .gte("end_date", today.toISOString())// fetch tasks from today
+        .lte("end_date", nextWeek.toISOString()); // fetch tasks within the next week
       setUpcomingTasks(data || []);
+      // set the upcoming tasks state with the fetched data
     } catch (err) {
       setError(err.message);
     } finally {
@@ -173,11 +173,10 @@ const CommonDashboard = ({ userInfo }) => {
   // Fetch upcoming hearings within the next month
   const fetchUpcomingHearings = async () => {
     try {
-      const today = new Date();
-      const nextMonth = new Date();
-      nextMonth.setMonth(today.getMonth() + 1);
-
-      const { data } = await supabase
+      const today = new Date(); // get today's date
+      const nextMonth = new Date();// create a new date object for next month
+      nextMonth.setMonth(today.getMonth() + 1);// set the month to next month
+      const { data } = await supabase // fetch hearings from Supabase
         .from("case_updates")
         .select(
           `
@@ -190,6 +189,7 @@ const CommonDashboard = ({ userInfo }) => {
         .lte("next_date", nextMonth.toISOString());
 
       setUpcomingHearings(data || []);
+      // set the upcoming hearings state with the fetched data
     } catch (err) {
       setError(err.message);
     } finally {

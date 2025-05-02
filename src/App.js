@@ -328,17 +328,8 @@ function App() {
             element={<AttorneyUpdate userInfo={userInfo} />}
           />
         </Route>
-        For backward compatibility with your existing routes
-        {/* <Route
-          path="/commondashboard"
-          element={
-            isAuthenticated ? (
-              <Navigate to="/dashboard" />
-            ) : (
-              <Navigate to="/signin" />
-            )
-          }
-        /> */}
+      
+        
         {/* Fallback route */}
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>

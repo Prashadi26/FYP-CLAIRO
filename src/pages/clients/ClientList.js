@@ -1,61 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { supabase } from "../../supabaseClient";
-import styles from "./ClientList.module.css";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, useEffect } from "react"; // Importing React and hooks
+import { supabase } from "../../supabaseClient"; // Importing Supabase client
+import styles from "./ClientList.module.css"; // Importing CSS module for styling
+import { useNavigate } from "react-router-dom"; // Importing useNavigate from react-router-dom for navigation
+import { useTranslation } from "react-i18next"; // Importing useTranslation hook for internationalization
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon for icons
 import {
   faUserTie,
   faSearch,
   faExclamationTriangle,
-  faArrowLeft,
-} from "@fortawesome/free-solid-svg-icons";
-import { FaPlus } from "react-icons/fa";
+} from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+import { FaPlus } from "react-icons/fa"; // Importing FontAwesome icons
+import { Pencil, Trash2 } from "lucide-react"; // Importing Lucide icons
 
-import { Pencil, Trash2 } from "lucide-react";
-
-const ClientList = ({ userInfo }) => {
-  const { t } = useTranslation();
-  const [clients, setClients] = useState([]);
-  const [error, setError] = useState(null);
-  const [totalClients, setTotalClients] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate();
+const ClientList = ({}) => {
+  const { t } = useTranslation(); // Hook for translation
+  const [clients, setClients] = useState([]); // State to manage clients data initialized to an empty array
+  const [error, setError] = useState(null); // State to manage error messages initialized to null
+  const [totalClients, setTotalClients] = useState(0); // State to manage total clients count initialized to 0
+  const [loading, setLoading] = useState(true); // State to manage loading status initialized to true
+  const [searchTerm, setSearchTerm] = useState(""); // State to manage search term initialized to an empty string
+  const navigate = useNavigate(); // Hook to navigate between routes
 
   // Fetch clients from Supabase on component mount
   useEffect(() => {
     fetchClients();
   }, []);
 
-  
   const fetchClients = async () => {
     try {
       setLoading(true);
-
       // Fetch clients linked to this lawyer
       const { data } = await supabase.from("clients").select("*");
-
-      setClients(data);
-      setTotalClients(data.length);
+      setClients(data); // Set clients data to state took from supabase
+      setTotalClients(data.length); // Set total clients count to state
     } catch (err) {
-      setError(err.message);
+      setError(err.message); // Set error message to state
     } finally {
-      setLoading(false);
+      setLoading(false); // Set loading status to false
     }
   };
 
+  // Function to handle client deletion with confirmation and associated cases check
   const handleDelete = async (clientId) => {
     if (window.confirm(t("confirm_delete_client"))) {
       try {
         setLoading(true);
-
         //  Check if the client is associated with any cases
         const { data: associatedCases } = await supabase
           .from("client_case")
           .select("case_id")
           .eq("client_id", clientId);
-
         // If there are associated cases, fetch their details
         if (associatedCases && associatedCases.length > 0) {
           //  Retrieve case numbers from the cases table
@@ -64,23 +58,21 @@ const ClientList = ({ userInfo }) => {
             .from("cases")
             .select("case_no")
             .in("case_id", caseIds);
-
           if (detailsError) throw detailsError;
-
           //  Create a message listing the associated case numbers
           const caseNumbers = caseDetails.map((c) => c.case_no).join(", ");
           alert(`${t("client_association_warning")}: ${caseNumbers}`);
-          return; // Exit without deleting
+          return;
+          // Exit without deleting Because of associated cases
         }
-
         //  Proceed with deletion since there are no associated cases
         const { error } = await supabase
           .from("clients")
           .delete()
           .eq("client_id", clientId);
-
+        // take clientId from the client list and  after delete it from supabase
         setClients(clients.filter((client) => client.client_id !== clientId));
-        setTotalClients(totalClients - 1);
+        setTotalClients(totalClients - 1); // Decrease total clients count by 1
       } catch (err) {
         setError(err.message);
       } finally {
@@ -92,6 +84,7 @@ const ClientList = ({ userInfo }) => {
   // Filter clients based on search term
   const filteredClients = clients.filter(
     (client) =>
+      // Check if the client name, email, or profession includes the search term
       client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       client.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (client.profession &&
